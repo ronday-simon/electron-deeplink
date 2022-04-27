@@ -37,7 +37,7 @@ class Deeplink extends EventEmitter {
     private infoPlistFileBak?: string;
     private logger?: any;
     private app: App;
-    private mainWindow: BrowserWindow;
+    private mainWindow?: BrowserWindow;
     private config: InstanceConfig;
 
     constructor(config: DeeplinkConfig) {
@@ -48,8 +48,9 @@ class Deeplink extends EventEmitter {
 
         this.config = { protocol, debugLogging, isDev, electronPath };
         this.app = app;
-        this.mainWindow = mainWindow;
-
+        if(mainWindow){
+            this.mainWindow = mainWindow;
+        }
         if (debugLogging) {
             this.logger = require('electron-log');
             this.logger.transports.file.level = 'debug';
