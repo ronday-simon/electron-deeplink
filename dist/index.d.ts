@@ -4,7 +4,7 @@ import { EventEmitter } from 'events';
 interface DeeplinkConfig {
     protocol: string;
     app: App;
-    mainWindow: BrowserWindow;
+    mainWindow?: BrowserWindow;
     isDev?: boolean;
     debugLogging?: boolean;
     electronPath?: string;
@@ -16,7 +16,7 @@ declare class Deeplink extends EventEmitter {
     private infoPlistFileBak?;
     private logger?;
     private app;
-    private mainWindow;
+    private mainWindow?;
     private config;
     constructor(config: DeeplinkConfig);
     private checkConfig;

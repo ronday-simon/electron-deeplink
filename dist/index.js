@@ -113,7 +113,9 @@ var Deeplink = /** @class */ (function (_super) {
         _this.checkConfig(config);
         _this.config = { protocol: protocol, debugLogging: debugLogging, isDev: isDev, electronPath: electronPath };
         _this.app = app;
-        _this.mainWindow = mainWindow;
+        if (mainWindow) {
+            _this.mainWindow = mainWindow;
+        }
         if (debugLogging) {
             _this.logger = require('electron-log');
             _this.logger.transports.file.level = 'debug';
@@ -143,7 +145,7 @@ var Deeplink = /** @class */ (function (_super) {
             });
         }
         else {
-            var args = process.argv[1] ? [path_1.default.resolve(process.argv[1])] : [];
+            var args = process.argv[process.argv.length - 1] ? [path_1.default.resolve(process.argv[process.argv.length - 1])] : [];
             app.setAsDefaultProtocolClient(protocol, process.execPath, args);
         }
         app.on('second-instance', _this.secondInstanceEvent);
