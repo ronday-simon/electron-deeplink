@@ -17,7 +17,7 @@ declare const process: Process;
 interface DeeplinkConfig {
     protocol: string;
     app: App;
-    mainWindow: BrowserWindow;
+    mainWindow?: BrowserWindow;
     isDev?: boolean;
     debugLogging?: boolean;
     electronPath?: string;
@@ -86,7 +86,7 @@ class Deeplink extends EventEmitter {
                 app.on('open-file', (event, url) => this.darwinOpenEvent(event, url, 'open-file'));
             });
         } else {
-            const args = process.argv[1] ? [path.resolve(process.argv[1])] : [];
+            const args = process.argv[process.argv.length - 1] ? [path.resolve(process.argv[process.argv.length - 1])] : [];
             
             app.setAsDefaultProtocolClient(protocol, process.execPath, args);
         } 
