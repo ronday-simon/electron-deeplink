@@ -96,7 +96,7 @@ class Deeplink extends EventEmitter {
     }
 
     private checkConfig = (config: DeeplinkConfig) => {
-        const expectedKeys = ['app', 'mainWindow', 'protocol'];
+        const expectedKeys = ['app', 'protocol'];
         const configKeys = Object.keys(config);
 
         const missingKeys = expectedKeys.filter((expectedKey) => {

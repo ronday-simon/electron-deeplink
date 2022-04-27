@@ -36,7 +36,7 @@ var Deeplink = /** @class */ (function (_super) {
     function Deeplink(config) {
         var _this = _super.call(this) || this;
         _this.checkConfig = function (config) {
-            var expectedKeys = ['app', 'mainWindow', 'protocol'];
+            var expectedKeys = ['app', 'protocol'];
             var configKeys = Object.keys(config);
             var missingKeys = expectedKeys.filter(function (expectedKey) {
                 return !configKeys.includes(expectedKey);
